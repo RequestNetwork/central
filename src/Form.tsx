@@ -5,6 +5,7 @@ import {
   StyledButton,
   FormSection,
   inputStyles,
+  Status,
 } from './components/Toolbox';
 
 interface InputState {
@@ -46,22 +47,22 @@ export class Form extends React.Component<{}, InputState> {
     return (
       <FormSection>
         <FormHeader>
-          <h2>Central Bank</h2>
+            <h2>Central Bank</h2>
+      <Status> {this.state && this.state.message}</Status>
         </FormHeader>
         <input
           style={inputStyles}
-          placeholder="Amount"
+          placeholder="Enter an amount to mint"
           type="number"
           onChange={this.handleAmount}
         />
         <input
           style={inputStyles}
-          placeholder="Recipient"
+          placeholder="Enter the address of the recipient"
           type="text"
           onChange={this.handleRecipient}
         />
         <StyledButton onClick={this.handleOnClick}>Send</StyledButton>
-        <div>{this.state && this.state.message}</div>
       </FormSection>
     );
   }

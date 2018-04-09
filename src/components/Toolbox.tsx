@@ -22,7 +22,9 @@ export const FormHeader = styled.div`
   background: ${bluePurple};
   margin-bottom: 2rem;
   width: 100%;
+  height: 5rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: helvetica;
@@ -68,3 +70,7 @@ export const inputStyles = {
   width: '70%',
   backgroundColor: '#e2e1e0',
 };
+
+export const Status =  styled.div`
+  min-height: 2rem;
+`;

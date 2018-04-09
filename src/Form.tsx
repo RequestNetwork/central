@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { instanceCentralBank, Web3 } from './index';
-import { FormHeader, StyledButton, FormSection, StyledInput } from './components/Toolbox';
+import {
+  FormHeader,
+  StyledButton,
+  FormSection,
+  inputStyles,
+} from './components/Toolbox';
 
 interface InputState {
   amount: number;
@@ -8,29 +13,30 @@ interface InputState {
   message: string;
 }
 
-class Form extends React.Component<_, State> {
+export class Form extends React.Component<{}, InputState> {
   state = {
     amount: 0,
     recipient: '',
-    message: ''
+    message: '',
   };
-  handleAmount = ({ target: { value } }) => this.setState({ amount: value });
+  handleAmount = (event: React.FormEvent<HTMLInputElement>) =>
+    this.setState({ amount: parseInt(event.currentTarget.value, 10) })
 
-  handleRecipient = ({ target: { value } }) =>
-    this.setState({ recipient: value });
+  handleRecipient = (event: React.FormEvent<HTMLInputElement>) =>
+    this.setState({ recipient: event.currentTarget.value })
 
   handleOnClick = () =>
-    this.sendTokens(this.state.amount, this.state.recipient);
+    this.sendTokens(this.state.amount, this.state.recipient)
 
-  setMessage = message => this.setState({ message });
+  setMessage = (message: string) => this.setState({ message });
 
-  async sendTokens(amount, recipient) {
+  async sendTokens(amount: number, recipient: string) {
     this.setMessage('pending');
     return await instanceCentralBank.methods
       .mint(Web3.utils.toWei(amount.toString(), 'ether'))
       .send({
         gas: 300000,
-        from: recipient
+        from: recipient,
       })
       .then(() => this.setMessage('success'))
       .catch(() => this.setMessage('failure'));
@@ -42,12 +48,14 @@ class Form extends React.Component<_, State> {
         <FormHeader>
           <h2>Central Bank</h2>
         </FormHeader>
-        <StyledInput
+        <input
+          style={inputStyles}
           placeholder="Amount"
           type="number"
           onChange={this.handleAmount}
         />
-        <StyledInput
+        <input
+          style={inputStyles}
           placeholder="Recipient"
           type="text"
           onChange={this.handleRecipient}
@@ -58,5 +66,3 @@ class Form extends React.Component<_, State> {
     );
   }
 }
-
-export default Form;

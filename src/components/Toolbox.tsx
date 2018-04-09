@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import Particles from "react-particles-js";
+import styled from 'styled-components';
+import Particles from 'react-particles-js';
 
-const blueCyan = "#6CFDCC";
-const bluePurple = "#5A89F9";
+const blueCyan = '#6CFDCC';
+const bluePurple = '#5A89F9';
 
 export const StyledButton = styled.div`
   cursor: pointer;
@@ -11,7 +11,8 @@ export const StyledButton = styled.div`
   line-height: 3rem;
   margin-top: 1rem;
   width: 100%;
-  font-size: 27px;
+  text-align: center;
+  font-size: 22px;
   font-family: helvetica;
   background-image: linear-gradient(to right, ${blueCyan}, ${bluePurple});
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -27,7 +28,7 @@ export const FormHeader = styled.div`
   font-family: helvetica;
   color: white;
   box-shadow: 0 3px 2px rgba(0, 0, 0, 0.16), 0 1px 2px rgba(0, 0, 0, 0.23);
-`
+`;
 
 export const Background = styled.div`
   position: fixed;
@@ -58,12 +59,12 @@ export const FormSection = styled.div`
   overflow: hidden;
 `;
 
-export const StyledInput = styled.input`
-  border-radius: 2px;
-  padding: 0.5rem;
-  border: none;
-  line-height: 2rem;
-  margin: 1rem;
-  width: 70%;
-  background-color: #e2e1e0;
-`;
+export const inputStyles = {
+  borderRadius: '2px',
+  padding: '0.5rem',
+  border: 'none',
+  lineHeight: '2rem',
+  margin: '1rem',
+  width: '70%',
+  backgroundColor: '#e2e1e0',
+};

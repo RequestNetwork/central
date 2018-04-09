@@ -1,17 +1,11 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import Form from './Form';
+import { Form } from './Form';
 import CentralBank from './abi';
 import { Background } from './components/Toolbox';
-import params from './particles';
 
 export const Web3 = require('web3');
 const web3 = new Web3(Web3.givenProvider);
-
-const styles = {
-  fontFamily: 'sans-serif',
-  textAlign: 'center'
-};
 
 export const instanceCentralBank = new web3.eth.Contract(
   CentralBank.abi,
@@ -19,7 +13,7 @@ export const instanceCentralBank = new web3.eth.Contract(
 );
 
 const App = () => (
-  <Background style={styles}>
+  <Background>
     <Form />
   </Background>
 );

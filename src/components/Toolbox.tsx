@@ -74,3 +74,8 @@ export const inputStyles = {
 export const Status =  styled.div`
   min-height: 2rem;
 `;
+
+export const TextArea = styled.div`
+  font-family: helvetica;
+  margin-bottom: 2rem;
+`;

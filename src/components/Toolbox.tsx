@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Particles from 'react-particles-js';
 
 const blueCyan = '#6CFDCC';
 const bluePurple = '#5A89F9';
@@ -41,10 +40,6 @@ export const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-export const ParticleBacground = styled(Particles)`
-  background: linear-gradient(180deg, #0e638a, #1f364d);
 `;
 
 export const FormSection = styled.div`

@@ -17,11 +17,9 @@ export const StyledButton = styled.div`
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 `;
 
-export const FormHeader = styled.div`
+export const BlueBanner = styled.div`
   background: ${bluePurple};
-  margin-bottom: 2rem;
   width: 100%;
-  height: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,6 +29,11 @@ export const FormHeader = styled.div`
   box-shadow: 0 3px 2px rgba(0, 0, 0, 0.16), 0 1px 2px rgba(0, 0, 0, 0.23);
 `;
 
+export const FormHeader = styled(BlueBanner)`
+  margin-bottom: 2rem;
+  height: 5rem;
+`;
+
 export const Background = styled.div`
   position: fixed;
   top: 0;
@@ -38,6 +41,7 @@ export const Background = styled.div`
   min-height: 100%;
   min-width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
@@ -56,6 +60,18 @@ export const FormSection = styled.div`
   overflow: hidden;
 `;
 
+export const Footer = styled(BlueBanner)`
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+`;
+
 export const inputStyles = {
   borderRadius: '2px',
   padding: '0.5rem',
@@ -66,7 +82,7 @@ export const inputStyles = {
   backgroundColor: '#e2e1e0',
 };
 
-export const Status =  styled.div`
+export const Status = styled.div`
   min-height: 2rem;
 `;
 

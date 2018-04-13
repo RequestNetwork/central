@@ -6,6 +6,7 @@ import {
   FormSection,
   inputStyles,
   Status,
+  RequestLogo,
 } from './components/Toolbox';
 
 interface InputState {
@@ -47,9 +48,9 @@ export class Form extends React.Component<{}, InputState> {
     return (
       <FormSection>
         <FormHeader>
-            <h2>Central Bank</h2>
-      <Status> {this.state && this.state.message}</Status>
+            <RequestLogo />
         </FormHeader>
+      <Status> {this.state && this.state.message}</Status>
         <input
           style={inputStyles}
           placeholder="Enter an amount to mint"

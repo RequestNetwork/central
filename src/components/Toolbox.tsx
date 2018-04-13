@@ -1,19 +1,19 @@
 import styled from 'styled-components';
+// @ts-ignore
+import logo from '../images/request-logo.png';
 
-const blueCyan = '#6CFDCC';
-const bluePurple = '#5A89F9';
+const blueCyan = '#5392ff';
+const bluePurple = '#103b56';
 
 export const StyledButton = styled.div`
   cursor: pointer;
   color: white;
-  border-radius: 1px;
   line-height: 3rem;
   margin-top: 1rem;
   width: 100%;
   text-align: center;
   font-size: 22px;
-  font-family: helvetica;
-  background-image: linear-gradient(to right, ${blueCyan}, ${bluePurple});
+  background-color: ${blueCyan};
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 `;
 
@@ -21,17 +21,30 @@ export const BlueBanner = styled.div`
   background: ${bluePurple};
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: helvetica;
   color: white;
-  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.16), 0 1px 2px rgba(0, 0, 0, 0.23);
+`;
+
+export const H2 = styled.h2`
+  font-weight: 500;
+`;
+
+export const RequestLogo = styled.div`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-image: url(${logo});
+  width: 4rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+
 `;
 
 export const FormHeader = styled(BlueBanner)`
-  margin-bottom: 2rem;
-  height: 5rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  height: 6rem;
+  justify-content: center;
 `;
 
 export const Background = styled.div`
@@ -61,13 +74,13 @@ export const FormSection = styled.div`
 `;
 
 export const Footer = styled(BlueBanner)`
+  flex-direction: column;
+  align-items: center;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding-top: 2rem;
 `;
@@ -87,6 +100,5 @@ export const Status = styled.div`
 `;
 
 export const TextArea = styled.div`
-  font-family: helvetica;
   margin-bottom: 2rem;
 `;

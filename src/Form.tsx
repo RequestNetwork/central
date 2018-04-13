@@ -48,9 +48,9 @@ export class Form extends React.Component<{}, InputState> {
     return (
       <FormSection>
         <FormHeader>
-            <RequestLogo />
+          <RequestLogo />
         </FormHeader>
-      <Status> {this.state && this.state.message}</Status>
+        <Status status={this.state && this.state.message}>{this.state && this.state.message}</Status>
         <input
           style={inputStyles}
           placeholder="Enter an amount to mint"

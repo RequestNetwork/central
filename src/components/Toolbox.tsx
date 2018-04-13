@@ -35,7 +35,6 @@ export const RequestLogo = styled.div`
   width: 4rem;
   background-size: contain;
   background-repeat: no-repeat;
-
 `;
 
 export const FormHeader = styled(BlueBanner)`
@@ -95,8 +94,23 @@ export const inputStyles = {
   backgroundColor: '#e2e1e0',
 };
 
+function getStatusColor(status: string) {
+  switch (status) {
+    case 'failure': return '#EF5350';
+    case 'pending': return '#EBB33F';
+    case 'success': return '#3FD783';
+    default:
+      return 'white';
+  }
+}
+
 export const Status = styled.div`
-  min-height: 2rem;
+  min-height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  background-color: ${(props: { status: string }) => getStatusColor(props.status)};
 `;
 
 export const TextArea = styled.div`

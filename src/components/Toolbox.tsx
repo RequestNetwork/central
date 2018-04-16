@@ -5,17 +5,17 @@ import logo from '../images/request-logo.png';
 const blueCyan = '#5392ff';
 const bluePurple = '#103b56';
 
-export const StyledButton = styled.div`
-  cursor: pointer;
-  color: white;
-  line-height: 3rem;
-  margin-top: 1rem;
-  width: 100%;
-  text-align: center;
-  font-size: 22px;
-  background-color: ${blueCyan};
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-`;
+export const buttonStyles = {
+  cursor: 'pointer',
+  color: 'white',
+  lineHeight: '3rem',
+  marginTop: '1rem',
+  width: '100%',
+  textAlign: 'center',
+  fontSize: '22px',
+  backgroundColor: blueCyan,
+  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)'
+};
 
 export const BlueBanner = styled.div`
   background: ${bluePurple};

@@ -30,13 +30,13 @@ export class Fields extends React.Component<Props> {
               type="number"
               onChange={handleChange}
             />
-            <input
+            {/*<input
               style={inputStyles}
               placeholder="Enter the address of the recipient"
               name="recipient"
               type="text"
               onChange={handleChange}
-            />
+            />*/}
             <button style={buttonStyles} type="submit">
               Send
             </button>

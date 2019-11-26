@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { instanceCentralBank, Web3 } from './index';
+import { ethers, utils } from 'ethers';
 import { Fields } from './components/Fields';
 
 import {
@@ -13,7 +13,10 @@ interface InputState {
   message: string;
 }
 
-export class Form extends React.Component<{}, InputState> {
+export class Form extends React.Component<
+  { instanceCentralBank: ethers.Contract | null },
+  InputState
+> {
   state = {
     message: '',
   };
@@ -22,14 +25,14 @@ export class Form extends React.Component<{}, InputState> {
 
   sendTokens = async (amount: number, recipient: string) => {
     this.setMessage('pending');
-    return await instanceCentralBank.methods
-      .mint(Web3.utils.toWei(amount.toString(), 'ether'))
-      .send({
-        gas: 300000,
-        from: recipient,
-      })
+    if (!this.props.instanceCentralBank) {
+      this.setMessage('Token contract not setup');
+      return;
+    }
+    return await this.props.instanceCentralBank.functions
+      .mint(utils.parseEther(amount.toString()))
       .then(() => this.setMessage('success'))
-      .catch(() => this.setMessage('failure'));
+      .catch((e: Error) => this.setMessage(`failure: ${e}`));
   }
 
   render() {

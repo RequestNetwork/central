@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './index.css';
+import { ethers } from 'ethers';
 import { render } from 'react-dom';
 import { Form } from './Form';
 import CentralBank from './abi';
@@ -11,30 +12,53 @@ import {
   Footer,
 } from './components/Toolbox';
 
-export const Web3 = require('web3');
-const web3 = new Web3(Web3.givenProvider);
-const tokenAddress = '0x995d6a8c21f24be1dd04e105dd0d83758343e258';
+interface Ethereum extends ethers.providers.AsyncSendable {
+  enable: () => Promise<void>;
+}
 
-export const instanceCentralBank = new web3.eth.Contract(
-  CentralBank.abi,
-  tokenAddress
-);
+interface Web3Window extends Window {
+  ethereum: Ethereum;
+}
+
+declare let window: Web3Window;
+
+let provider: ethers.providers.JsonRpcProvider;
+const tokenAddress = '0x995d6a8c21f24be1dd04e105dd0d83758343e258';
 
 interface State {
   isRinkeby: boolean;
+  instanceCentralBank: ethers.Contract | null;
 }
 
 export class App extends React.Component<{}, State> {
   state = {
     isRinkeby: false,
+    instanceCentralBank: null,
   };
 
   componentDidMount() {
-    web3.eth.net.getId().then((networkId: number) => {
-      if (networkId === 4) {
-        this.setState({ isRinkeby: true });
-      }
-    });
+    if (window.ethereum) {
+      window.ethereum.enable().then(() => {
+        // Ethereum user detected. You can now use the provider.
+        provider = new ethers.providers.Web3Provider(window.ethereum);
+
+        const signer = provider.getSigner();
+
+        const instanceCentralBank = new ethers.Contract(
+          tokenAddress,
+          CentralBank.abi,
+          signer
+        );
+
+        this.setState({ instanceCentralBank });
+
+        provider.getNetwork().then(network => {
+          if (network.chainId === 4) {
+            this.setState({ isRinkeby: true });
+          }
+        });
+      });
+    }
   }
 
   render() {
@@ -53,11 +77,11 @@ export class App extends React.Component<{}, State> {
     return (
       <>
         <Background>
-          <Form />
+          <Form instanceCentralBank={this.state.instanceCentralBank} />
         </Background>
         <Footer>
-            <div>Token Address</div>
-            <TextArea>{tokenAddress}</TextArea>
+          <div>Token Address</div>
+          <TextArea>{tokenAddress}</TextArea>
         </Footer>
       </>
     );

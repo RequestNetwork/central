@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled, { CSSProperties } from 'styled-components';
 // @ts-ignore
 import logo from '../images/request-logo.png';
 
 const blueCyan = '#5392ff';
 const bluePurple = '#103b56';
 
-export const buttonStyles = {
+export const buttonStyles: CSSProperties = {
   cursor: 'pointer',
   color: 'white',
   lineHeight: '3rem',
@@ -14,7 +14,7 @@ export const buttonStyles = {
   textAlign: 'center',
   fontSize: '22px',
   backgroundColor: blueCyan,
-  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)'
+  boxShadow: '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)',
 };
 
 export const BlueBanner = styled.div`
@@ -96,9 +96,12 @@ export const inputStyles = {
 
 function getStatusColor(status: string) {
   switch (status) {
-    case 'failure': return '#EF5350';
-    case 'pending': return '#EBB33F';
-    case 'success': return '#3FD783';
+    case 'failure':
+      return '#EF5350';
+    case 'pending':
+      return '#EBB33F';
+    case 'success':
+      return '#3FD783';
     default:
       return 'white';
   }
@@ -110,7 +113,8 @@ export const Status = styled.div`
   text-align: center;
   vertical-align: middle;
   width: 100%;
-  background-color: ${(props: { status: string }) => getStatusColor(props.status)};
+  background-color: ${(props: { status: string }) =>
+    getStatusColor(props.status)};
 `;
 
 export const TextArea = styled.div`

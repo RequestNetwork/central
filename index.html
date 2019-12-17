@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Central Bank</title>
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link
+      rel="icon"
+      href="assets/cropped-favicon-192x192.png"
+      sizes="192x192"
+    />
+    <link rel="icon" href="assets/cropped-favicon-32x32.png" sizes="32x32" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="box">
+      <div class="banner">
+        <div class="logo"></div>
+      </div>
+      <form id="form" class="form">
+        <h1 class="title">CTBK Faucet</h1>
+        <label for="amount" class="label">Amount to mint:</label>
+        <input type="number" name="amount" id="amount" class="input" />
+        <input type="submit" id="submit" class="button" value="Ka-ching!" />
+      </form>
+    </div>
+    <footer class="footer">
+      <span id="token-address" class="token-address"
+        >Token Address: 0x995d6a8c21f24be1dd04e105dd0d83758343e258</span
+      >
+    </footer>
+    <script
+      src="https://cdn.ethers.io/scripts/ethers-v4.min.js"
+      charset="utf-8"
+      type="text/javascript"
+    ></script>
+    <script src="main.js"></script>
+  </body>
+</html>
